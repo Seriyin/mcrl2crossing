@@ -1,1 +1,8 @@
-[true]<(foxr. farmerr . gooser) + (gooser. farmerr . beansr) + (foxl. farmerl . goosel) + (goosel. farmerl . beansl)>false && [true]<win>true
+%There is no path where fox and goose or goose and beans are alone
+!<(foxr. farmerl . gooser . (farmerl + beansl)) 
+        + (gooser. farmerl . beansr . (farmerl + foxl)) 
+        + (foxl. farmerr . goosel . (farmerr + beansr)) 
+        + (goosel. farmerr . beansl . (farmerr + foxr))>true 
+    &&
+%Eventualy the puzzle is solved 
+        [true*]<win>true
