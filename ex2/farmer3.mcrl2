@@ -15,10 +15,11 @@ eqn
 
 act
     fox,goose,beans,farmer : Position;
+	crossf, crossg, crossb, crossfm : Position;
     % system actions, parameterised on the position
     win;
     % actions to detect the winning condition
-	report : Nat;
+    report : Nat;
 
 proc
     State(fm:Position,f:Position,g:Position,b:Position) =
@@ -30,11 +31,18 @@ proc
     +   ((fm==right && f==right && g==right && b==right) -> win.State(left,left,left,left));
 
 	Counter(n:Nat) =
-		( n < 100 ) ->
+		( n < 20 ) ->
 			sum p : Position .
-				report(n).(farmer(p) + fox(p) + goose(p) + beans(p)).Counter(n+1)
+				(farmer(p) + fox(p) + goose(p) + beans(p)).report(n+1).Counter(n+1)
 		<>
 			report(n).Counter(n);
 init
-	State(left,left,left,left) ||
-	Counter(0);
+	allow({crossf, crossg, crossb, crossfm, win, report},
+		comm({ farmer | farmer -> crossfm,
+			   goose | goose -> crossg,
+			   beans | beans -> crossb,
+			   fox | fox -> crossf },
+
+			State(left,left,left,left) ||
+			Counter(0)
+		));
