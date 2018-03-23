@@ -18,7 +18,7 @@ act
     % system actions, parameterised on the position
     win;
     % actions to detect the winning condition
-	report;
+	report : Nat;
 
 proc
     State(fm:Position,f:Position,g:Position,b:Position) =
@@ -32,9 +32,9 @@ proc
 	Counter(n:Nat) =
 		( n < 100 ) ->
 			sum p : Position .
-				(farmer(p) + fox(p) + goose(p) + beans(p)).Counter(n+1)
+				report(n).(farmer(p) + fox(p) + goose(p) + beans(p)).Counter(n+1)
 		<>
-			report.Counter(n);
+			report(n).Counter(n);
 init
 	State(left,left,left,left) ||
 	Counter(0);

@@ -29,4 +29,4 @@ proc
     +   ((fm==right && f==right && g==right && b==right) -> win.State(left,left,left,left));
     
 init
-State(left,left,left,left)
+State(left,left,left,left);
