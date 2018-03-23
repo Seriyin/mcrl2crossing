@@ -10,7 +10,8 @@ var
 eqn
     inv(left) = right ;
     inv(right) = left ;
-    ok(fm,f,g,b) = %% (1) %%;
+    ok(fm,f,g,b) = (f == g => fm == g) &&
+	               (g == b => fm == g);
 
 act
     fox,goose,beans,farmer : Position;
