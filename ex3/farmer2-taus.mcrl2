@@ -10,8 +10,7 @@ var
 eqn
     inv(left) = right ;
     inv(right) = left ;
-    ok(fm,f,g,b) = (f == g => fm == g) &&
-	               (g == b => fm == g);
+    ok(fm,f,g,b) = true;
 
 act
     fox,goose,beans,farmer : Position;
@@ -29,5 +28,6 @@ proc
     +   ((fm==right && f==right && g==right && b==right) -> win.State(left,left,left,left));
 
 init
-hide ({ farmer, fox, goose, beans },
-    State(left,left,left,left))
+hide (
+    { farmer, fox, goose, beans },
+    State(left,left,left,left));
