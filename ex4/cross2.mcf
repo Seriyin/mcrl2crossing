@@ -1,1 +1,1 @@
-forall fm,f,g,b: Position . [(fox(f)+goose(g)+beans(b)+farmer(fm))*](val(ok(fm,f,g,b))=>true) && !<(fox(f)+goose(g)+beans(b)+farmer(fm))*.win>false
+forall fm,f,g,b: Position . [(fox(f)+goose(g)+beans(b)+farmer(fm))*](true => val(ok(fm,f,g,b))) && !<(fox(f)+goose(g)+beans(b)+farmer(fm))*.win>false
