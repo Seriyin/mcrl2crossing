@@ -1,1 +1,5 @@
-forall fm,f,g,b: Position . [(fox(f)+goose(g)+beans(b)+farmer(fm))*](true => val(ok(fm,f,g,b))) && !<(fox(f)+goose(g)+beans(b)+farmer(fm))*.win>false
+forall fm,f,g,b:Position . 
+    %If there is no path where things are not ok,
+        !<true*>(val(ok(fm,f,g,b)) => false && false => val(ok(fm,f,g,b))) =>
+    %All paths have the ability to solve the puzzle eventually
+        [true*]<true*.win>true
